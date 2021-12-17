@@ -17,14 +17,35 @@ $censoredString = str_replace("parolaccia", "***", $originalString);
 ?>
 
 <h1>Hello world</h1>
+
 <h1><?php echo "La somma di ", $x, " + ", $y, " è uguale a: ", $z ?></h3>
+
 <hr>
+
 <h4>Stringa originale (lorem con parolacce) - Lunghezza paragrafo: <?php echo strlen($originalString)?></h6>
 <p><?php echo $originalString ?></p>
 <h4>Stringa censurata (censura: ***) - Lunghezza paragrafo: <?php echo strlen($censoredString)?></h6>
 <p><?php echo $censoredString ?></p>
+
 <hr>
-<h1><?php echo "ciao ", $_GET["name"] ?></h1>
+
+<?php $newOriginalString = "Questo php è un altro testo boolean da censurare. Le parole boolean in più che vedete sono senza php significato e servono per lo scopo boolean dell'esercizio. Verranno censurate nella sezione succesiva a questo php paragrafo boolean. Potete scegliere quali parole censurare php nel form sottostante."?>
+
+<p style="width: 50%; font-size: 2em"><?php echo $newOriginalString ?></p>
+<h3>Lunghezza paragrafo: <?php echo strlen($newOriginalString)?></h3>
+<form action="index.php" method="get">Parola da censurare:
+    <input type="text" name="word">
+    <input type="submit">
+</form>
+<h2>Nuova stringa censurata &#8628;</h2>
+<span style="display:inline-block; width: 50%; font-size: 2em">
+    <?php 
+        $newCensoredString = str_replace($_GET["word"], "***", $newOriginalString);
+        echo $newCensoredString
+    ?>
+</span>
+<h3>Lunghezza paragrafo: <?php echo strlen($newCensoredString)?></h3>
+<h3><?php echo "La parola che è stata censurata è: ", $_GET["word"] ?></h3>
 
 </body>
 </html>
